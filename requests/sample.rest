@@ -1,7 +1,7 @@
-DELETE http://localhost:3001/api/persons/3
+DELETE https://silent-haze-5202.fly.dev/api/persons/3
 
 ###
-POST http://localhost:3001/api/persons/
+POST https://silent-haze-5202.fly.dev/api/persons
 content-type: application/json
 
 {
