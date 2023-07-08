@@ -8,7 +8,7 @@ const Person = require("./models/person");
 app.use(express.static("build"));
 app.use(express.json());
 
-morgan.token("custom", function (req, res) {
+morgan.token("custom", function (req) {
     return JSON.stringify(req.body);
 });
 app.use(
@@ -37,7 +37,7 @@ app.get("/info", (request, response) => {
 
 app.get("/api/persons/:id", (request, response, next) => {
     const id = Number(request.params.id);
-    Person.findById(request.params.id)
+    Person.findById(id)
         .then((note) => {
             if (note) {
                 response.json(note);
@@ -48,9 +48,9 @@ app.get("/api/persons/:id", (request, response, next) => {
         .catch((error) => next(error));
 });
 
-app.delete("/api/persons/:id", (request, response) => {
+app.delete("/api/persons/:id", (request, response, next) => {
     Person.findByIdAndRemove(request.params.id)
-        .then((result) => {
+        .then(() => {
             response.status(204).end();
         })
         .catch((error) => next(error));
