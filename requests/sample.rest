@@ -8,3 +8,12 @@ content-type: application/json
     "name": "sample",
     "number": "32132131231232"
 }
+
+###
+POST http://localhost:3001/api/persons
+content-type: application/json
+
+{
+    "name": "sample",
+    "number": "32132131231232"
+}
